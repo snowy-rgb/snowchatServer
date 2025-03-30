@@ -132,7 +132,10 @@ def handle_client(client):
 
 # 서버 설정
 server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-server.bind(('0.0.0.0', 7878))
+
+port = int(os.environ.get('PORT', 10000))  # Render가 제공하는 포트
+server.bind(('0.0.0.0', port))
+
 server.listen()
 print("서버 시작됨. 대기 중...")
 
